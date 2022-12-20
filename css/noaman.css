@@ -309,12 +309,13 @@ header .container .logo {
 
 }
 
-.landing .container i {
+section .container > i {
   position: absolute;
   bottom: .5rem;
   left: 50%;
   transform: translateX(-50%);
   animation: arrow-down 2s infinite;
+  color: var(--mainTransColor, #2196f3);
 }
 
 @keyframes arrow-down {
@@ -343,11 +344,126 @@ header .container .logo {
 
 /* Section Landing Styling End */
 
+/* * Header Title Start */
+.title {
+  margin: 6rem 0;
+  text-align: center;
+  
+  display: flex;
+  justify-content: center;
+}
+.title h2 {
+  padding: .5rem 1rem;
+  font-size: 2rem;
+  text-transform: uppercase;
+  border: 2px solid black;
+  width: fit-content;
+
+  position: relative;
+  transition: .5s .5s;
+}
+.title h2:hover {
+  color: white;
+  border-color: white;
+}
+.title h2::before, 
+.title h2::after {
+  content: "";
+  width: 15px;
+  height: 15px;
+  background-color: var(--mainTransColor, #2196f3);
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: -1;
+}
+.title h2::before {
+  left: -2rem;
+  transition: left .5s, .5s .5s;
+}
+.title h2::after {
+  right: -2rem;
+  transition: right .5s,border-radius .5s .5s, .5s .5s;
+}
+
+
+.title h2:hover::before {
+  left: 0;
+  width: 51%;
+  height: 100%;
+  border-radius: 0;
+}
+.title h2:hover::after {
+  right: 0;
+  width: 50%;
+  height: 100%;
+  border-radius: 0;
+}
+/* * Header Title End */
+
 /* Section Articles Styling Start */
 .articles {
-  
+
 }
 .articles .container {
 }
+.articles .container .cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+.articles .container .cards {
+  padding-bottom: var(--sectionPadding, 2rem);
+}
+.cards .card {
+  border-radius: .25rem;
+  box-shadow: 0 2px 15px rgb(0 0 0 / 10%);
+  position: relative;
+  transition: .25s, box-shadow .25s;
+}
+.cards .card:hover {
+
+  transform: translateY(-1rem);
+}
+.cards .card .image img {
+  width: 100%;
+  border-top-left-radius: .5rem;
+  border-top-right-radius: .5rem;
+}
+.cards .card .text {
+  padding: var(--sectionPadding);
+  border-bottom: 1px solid var(--bgColor, #ececec);
+}
+.cards .card .text h3 {
+  margin-top: 0;
+}
+.cards .card .text p {
+  margin-bottom: 0;
+  font-size: 1.05rem;
+  line-height: 1.4;
+}
+.cards .card .read {
+  padding: 1rem 2rem;
+  font-weight: bold;
+  color: var(--mainColor, #1787e0);
+}
+.cards .card:hover .read i {
+  animation: arrow-left .5s infinite;
+  position: relative;
+}
+
+@keyframes arrow-left {
+  50% {
+    transform: translateX(-5px);
+  }
+  100% {
+    transform: translateX(5px);
+  }
+}
+.cards .card a:after {
+  
+}
+
 
 /* Section Articles Styling End */
