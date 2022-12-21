@@ -11,7 +11,6 @@
   --bgColor: #ececec;
   --fontColor: #666666;
   --main-transition: .25s
-  
 }
 
 html {
@@ -31,6 +30,7 @@ ul {
   padding: 0;
   margin: 0;
 }
+
 p {
   color: var(--fontColor, #666666);
 }
@@ -38,6 +38,8 @@ p {
 .container {
   padding-left: 1rem;
   padding-right: 1rem;
+
+  padding-bottom: 3rem;
   margin-left: auto;
   margin-right: auto;
 }
@@ -83,12 +85,13 @@ p {
 /* Section Header Styling */
 header {
   background-color: white;
-  
+
   box-shadow: 0px -7px 14px black;
 }
 
 header .container {
   position: relative;
+  padding-bottom: 0;
 }
 
 header .container .logo {
@@ -266,6 +269,7 @@ header .container .logo {
 .landing .container .text h1 {
   font-size: 2rem;
 }
+
 .landing .container .text p {
   font-size: 1.25rem;
   line-height: 1.7;
@@ -278,16 +282,20 @@ header .container .logo {
   animation: landing-image 2s infinite;
 
 }
+
 @media (max-width: 767px) {
-  .landing  {
+  .landing {
     text-align: center;
   }
+
   .landing .container {
     grid-template-columns: 1fr;
   }
+
   .landing .container .image {
     display: none;
   }
+
   .landing .container .text p {
     margin-left: 10%;
     margin-right: 10%;
@@ -309,7 +317,7 @@ header .container .logo {
 
 }
 
-section .container > i {
+section .container>i {
   position: absolute;
   bottom: .5rem;
   left: 50%;
@@ -348,25 +356,29 @@ section .container > i {
 .title {
   margin: 6rem 0;
   text-align: center;
-  
+
   display: flex;
   justify-content: center;
 }
+
 .title h2 {
   padding: .5rem 1rem;
   font-size: 2rem;
   text-transform: uppercase;
   border: 2px solid black;
   width: fit-content;
-
+  z-index: 1;
   position: relative;
-  transition: .5s .5s;
+  transition: .5s;
 }
+
 .title h2:hover {
   color: white;
   border-color: white;
+
 }
-.title h2::before, 
+
+.title h2::before,
 .title h2::after {
   content: "";
   width: 15px;
@@ -377,14 +389,17 @@ section .container > i {
   top: 50%;
   transform: translateY(-50%);
   z-index: -1;
+  transition: .1s;
 }
+
 .title h2::before {
   left: -2rem;
-  transition: left .5s, .5s .5s;
+  transition: .5s;
 }
+
 .title h2::after {
   right: -2rem;
-  transition: right .5s,border-radius .5s .5s, .5s .5s;
+  transition: .5s;
 }
 
 
@@ -394,60 +409,66 @@ section .container > i {
   height: 100%;
   border-radius: 0;
 }
+
 .title h2:hover::after {
   right: 0;
   width: 50%;
   height: 100%;
   border-radius: 0;
 }
+
 /* * Header Title End */
 
 /* Section Articles Styling Start */
-.articles {
+.articles {}
 
-}
-.articles .container {
-}
+.articles .container {}
+
 .articles .container .cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 2rem;
 }
-.articles .container .cards {
-  padding-bottom: var(--sectionPadding, 2rem);
-}
+
 .cards .card {
   border-radius: .25rem;
   box-shadow: 0 2px 15px rgb(0 0 0 / 10%);
   position: relative;
   transition: .25s, box-shadow .25s;
 }
+
 .cards .card:hover {
 
   transform: translateY(-1rem);
 }
+
 .cards .card .image img {
   width: 100%;
   border-top-left-radius: .5rem;
   border-top-right-radius: .5rem;
 }
+
 .cards .card .text {
   padding: var(--sectionPadding);
   border-bottom: 1px solid var(--bgColor, #ececec);
 }
+
 .cards .card .text h3 {
   margin-top: 0;
 }
+
 .cards .card .text p {
   margin-bottom: 0;
   font-size: 1.05rem;
   line-height: 1.4;
 }
+
 .cards .card .read {
   padding: 1rem 2rem;
   font-weight: bold;
   color: var(--mainColor, #1787e0);
 }
+
 .cards .card:hover .read i {
   animation: arrow-left .5s infinite;
   position: relative;
@@ -457,13 +478,267 @@ section .container > i {
   50% {
     transform: translateX(-5px);
   }
+
   100% {
     transform: translateX(5px);
   }
 }
-.cards .card a:after {
+
+/* Section Articles Styling End */
+.spikes {
+  position: relative;
+}
+
+.spikes::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  width: 100%;
+  height: 30px;
+  z-index: 1;
+  background-image: linear-gradient(135deg, white 25%, transparent 25%), linear-gradient(225deg, white 25%, transparent 25%);
+  background-size: 30px 30px;
+}
+
+
+
+/* Section Gallery Styling Start */
+.gallery {
+  background-color: var(--bgColor, #ececec);
+
+}
+
+.gallery .title {
+  margin: 0;
+}
+
+.gallery .title h2 {
+  margin-top: 6rem;
+  margin-bottom: 6rem;
+}
+
+.gallery .boxes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.gallery .boxes .box {
+  padding: 1rem;
+  background-color: white;
+  box-shadow: 0 7px 4px rgb(0 0 0 / 10%);
+  overflow: hidden;
+}
+
+.gallery .boxes .box img {
+  width: 100%;
+  display: block;
+
+}
+
+.gallery .boxes .box .image {
+  overflow: hidden;
+  position: relative;
+}
+
+.gallery .boxes .box .image::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 0;
+  height: 0;
+  background-color: white;
+  z-index: 1;
+  opacity: .25;
+  transition: .25s;
+}
+
+.gallery .boxes .box .image:hover img {
+  rotate: 5deg;
+  scale: 1.1;
+  transition: .25s;
+}
+
+.gallery .boxes .box .image:hover::before {
+  width: 100%;
+  height: 100%;
+}
+
+.features .container .boxes {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 3rem;
+}
+
+.features .container .boxes .f-box {
+  border: 1px solid #cfcfcf;
+  overflow: hidden;
+}
+
+.boxes .f-box {
+  text-align: center;
+}
+.boxes .f-box .image {
+  position: relative;
+}
+.boxes .f-box .image::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--mainColor, #1787e0);
+  opacity: .6;
+}
+
+.boxes .f-box .image::after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  right: 0;
+  border-style: solid;
+  border-width: 0px 0px 170px 500px;
+  border-color: transparent transparent white transparent;
+  transition: .25s;
+}
+.boxes .f-box:hover .image::after {
+  border-width: 0px 700px 170px 0px;
+  border-color: transparent transparent white transparent;
+}
+.boxes .f-box .image img {
+  width: 100%;
+  display: block;
+}
+.boxes .f-box .text {
+  padding: 1.5rem;
+  line-height: 1.8;
+}
+.boxes .f-box .text h3 {
+  font-size: 2.5rem;
+  margin: auto;
+  position: relative;
+  width: fit-content;
+  
+  margin-bottom: 1rem;
+}
+.boxes .f-box .text h3::after {
+  content: "";
+  position: absolute;
+  bottom: -0.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  height: 5px;
+  background-color: var(--mainColor, #1787e0);
+}
+
+.boxes .f-box .text p {
+  font-size: 1.2rem;
+  margin-bottom: 3rem;
+}
+.boxes .f-box .text button {
+  padding: .5rem 1.5rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  border: 4px solid var(--mainColor, #1787e0);
+  color: var(--mainColor, #1787e0);
+  border-radius: .4rem;
+  background-color: transparent;
+  transition: .25s .25s;
+  position: relative;
+  cursor: pointer;
+}
+.boxes .f-box .text button::before {
+  content: "";
+  height: 100%;
+  width: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: var(--mainColor, #1787e0);
+  transition: .25s;
+  
+  z-index: -1;
+}
+.boxes .f-box:hover .text button::before {
+  width: 100%;
+}
+.boxes .f-box:hover .text button {
+  color: white; 
+}
+.boxes .f-box:first-child {
+  --mainColor: #f44036;
+}
+.boxes .f-box:nth-child(2) {
+  --mainColor: #009688; 
+}
+/* Section Gallery Styling End */
+/* section TeamMember Styling Start */
+
+.testimonials {
+  background-color: var(--bgColor, #cfcfcf);
+}
+.testimonials .container .title {
+  margin-top: 0;
+}
+.testimonials .container .title h2 {
+  margin-top: 6rem;
+  margin-bottom: 0;
+  
+}
+
+.testimonials .container .teams {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 3rem;
+}
+
+.container .teams .team-member {
+  padding: 1rem;
+  background-color: white;
+  position: relative;
+  
+  border-radius: .5rem;
+  box-shadow: 1px 1px 22px #cfcfcf;
+}
+.container .teams .team-member h5 {
+  font-size: 1.25rem;
+  margin: 0;
+}
+.container .teams .team-member p:first-of-type {
+  margin-top: .5rem;
+  margin-bottom: 0;
+}
+.teams .team-member .stars {
+  gap: .25rem;
+  margin-top: .5rem;
+}
+.teams .team-member .stars i.filled {
+  color: #ffc107;
+}
+.teams .team-member .image {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  right: -10px;
+  top: -50px;
+  z-index: 1;
+}
+
+.container .teams .team-member p:last-of-type {
+  line-height: 1.5;
+  margin-bottom: 0;
+  margin-top: .5rem;
   
 }
 
 
-/* Section Articles Styling End */
+.teams .team-member .image img {
+  width: 100%;
+  border-radius: 50%;
+  border: 10px  solid var(--bgColor, #cfcfcf);
+}
+/* section TeamMember Styling End */
